@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  @apply text-base;
+}
+
+.card {
+  @apply p-4 bg-white shadow-md border rounded-md;
+}
+
+.rs-form-group {
+  @apply !mb-0;
+}
+
+.flex-c {
+  @apply flex flex-col items-center;
+}
+
+.flex-cr {
+  @apply flex items-center;
+}
+
+svg {
+  @apply flex-shrink-0;
+}
+
+.title {
+  @apply tracking-widest uppercase underline;
+}
