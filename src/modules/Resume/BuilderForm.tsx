@@ -34,15 +34,34 @@ type Props = {
 const BuilderForm: React.FC<Props> = ({ open, setOpen }) => {
   const { formValues, setFormValues } = useStore();
   const [active, setActive] = useState("about");
+  const [placement, setPlacement] = useState<"left" | "right">("left");
 
-  console.log({ formValues });
+  // console.log({ formValues });
 
   return (
     <>
-      <Drawer placement="left" open={open} onClose={() => setOpen(false)}>
+      <Drawer
+        className="!w-full lg:!w-[50%]"
+        size="lg"
+        placement={placement}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
         <Drawer.Header>
           <Drawer.Title>Edit Details</Drawer.Title>
           <Drawer.Actions>
+            <Button
+              className="lg:!inline-block !hidden"
+              appearance="ghost"
+              onClick={() =>
+                setPlacement(placement === "left" ? "right" : "left")
+              }
+            >
+              {placement === "left"
+                ? "Bring to Right side"
+                : "Bring to Left side"}
+            </Button>
+
             <Button appearance="primary" onClick={() => setOpen(false)}>
               Save
             </Button>
@@ -51,8 +70,22 @@ const BuilderForm: React.FC<Props> = ({ open, setOpen }) => {
 
         <Drawer.Body className="!p-5">
           <Nav
-            className="mb-5"
+            className="mb-5 hidden md:block"
             appearance="subtle"
+            activeKey={active}
+            onSelect={setActive}
+          >
+            {Tabs.map(({ name }) => (
+              <Nav.Item key={name} eventKey={name.toLowerCase()}>
+                {name}
+              </Nav.Item>
+            ))}
+          </Nav>
+
+          <Nav
+            className="mb-5 block md:hidden"
+            appearance="subtle"
+            vertical
             activeKey={active}
             onSelect={setActive}
           >

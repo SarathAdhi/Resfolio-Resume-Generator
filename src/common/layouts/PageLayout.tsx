@@ -2,6 +2,8 @@ import React from "react";
 import NavBar from "@components/NavBar";
 import clsx from "clsx";
 import { Component } from "types/component";
+import { Container, Content } from "rsuite";
+import Footer from "@components/Footer";
 
 type Props = {
   ActionComponent?: React.ReactNode;
@@ -14,13 +16,17 @@ const PageLayout: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <main className="flex flex-col items-center min-h-screen">
+      <Container className="flex flex-col items-center gap-8 min-h-screen">
         <NavBar ActionComponent={ActionComponent} />
 
-        <div className={clsx("p-4 max-w-full w-[1536px]", className)}>
+        <Content
+          className={clsx("p-2 sm:p-4 !pt-0 max-w-full w-[1536px]", className)}
+        >
           {children}
-        </div>
-      </main>
+        </Content>
+
+        <Footer />
+      </Container>
     </>
   );
 };

@@ -29,7 +29,7 @@ const Template_2 = () => {
   return (
     <div
       id="template-2"
-      className="text-black h-full flex flex-col items-center gap-4"
+      className="p-8 text-black h-full flex flex-col items-center gap-4"
     >
       <div className="w-full flex items-center justify-between gap-4">
         {image && <img src={image} className="w-36 shadow-lg rounded-full" />}

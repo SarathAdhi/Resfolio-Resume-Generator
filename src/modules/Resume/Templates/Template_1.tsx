@@ -27,8 +27,11 @@ const Template_1 = () => {
   } = formValues;
 
   return (
-    <div id="template-1" className="text-black h-full flex gap-4">
-      <div className="w-72 flex-shrink-0 h-full p-2 flex-c gap-4 bg-[#f4f4f4] rounded-t-lg border-2 border-gray-500 border-b-0">
+    <div
+      id="template-1"
+      className="p-8 !pb-0 text-black min-h-screen grid grid-cols-8 gap-4"
+    >
+      <div className="col-span-3 flex-shrink-0 h-full p-2 flex-c gap-4 bg-[#f4f4f4] rounded-t-lg border-2 border-gray-500 border-b-0">
         {image && <img src={image} className="shadow-lg rounded-md" />}
 
         <div className="-mt-2 flex-c">
@@ -72,7 +75,7 @@ const Template_1 = () => {
             <p className="flex-cr !items-start gap-4 ">
               <BsLinkedin />
 
-              <Link href={linkedin} className="-mt-0.5 break-all">
+              <Link href={linkedin} className="-mt-1 break-all">
                 {linkedin}
               </Link>
             </p>
@@ -82,7 +85,7 @@ const Template_1 = () => {
             <p className="flex-cr !items-start gap-4 ">
               <BsGithub />
 
-              <Link href={github} className="-mt-0.5 break-all">
+              <Link href={github} className="-mt-1 break-all">
                 {github}
               </Link>
             </p>
@@ -111,7 +114,7 @@ const Template_1 = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col gap-8">
+      <div className="col-span-5 w-full flex flex-col gap-8">
         <div className="grid gap-2">
           <h4 className="title">Education History</h4>
 
@@ -120,7 +123,7 @@ const Template_1 = () => {
               <div key={index} className="flex items-end justify-between">
                 <div>
                   <h5>{edu.e_degree}</h5>
-                  <h6 className="tracking-wider text-base text-gray-400">
+                  <h6 className="tracking-wider text-base text-gray-500">
                     {edu.e_college}
                   </h6>
                 </div>
@@ -145,7 +148,7 @@ const Template_1 = () => {
               <div key={index} className="flex items-end justify-between gap-4">
                 <div>
                   <h5>{w.w_role}</h5>
-                  <h6 className="tracking-wider text-base text-gray-400">
+                  <h6 className="tracking-wider text-base text-gray-500">
                     @{w.w_company}
                   </h6>
                 </div>

@@ -8,7 +8,7 @@ const Templates = () => {
   const { setTemplate, activeTemplate } = useStore();
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-3 gap-4">
       {_Templates.map((Component, index) => {
         const compName = `template-${index + 1}`;
 

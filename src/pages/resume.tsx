@@ -1,6 +1,6 @@
 import PageLayout from "@layouts/PageLayout";
 import React, { useRef, useState } from "react";
-import { Button, Nav } from "rsuite";
+import { Button, Nav, Tooltip, Whisper } from "rsuite";
 import { useReactToPrint } from "react-to-print";
 import BuilderForm from "@modules/Resume/BuilderForm";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
@@ -21,14 +21,18 @@ const ResumePage = () => {
   return (
     <PageLayout
       ActionComponent={
-        <Nav.Item
-          as={Button}
-          className="!rounded-md !text-base !font-semibold"
-          onClick={downloadPdfDocument}
-          icon={<FiDownload />}
+        <Whisper
+          placement="bottom"
+          speaker={<Tooltip>Download Resume</Tooltip>}
         >
-          Download Resume
-        </Nav.Item>
+          <Nav.Item
+            className="!bg-green-500 !text-white !p-2 sm:!px-4 sm:!py-2 !rounded-md !w-full !flex items-center gap-2"
+            onClick={downloadPdfDocument}
+            icon={<FiDownload size={20} />}
+          >
+            <span className="sm:hidden block">Download Resume</span>
+          </Nav.Item>
+        </Whisper>
       }
       className="flex flex-col gap-4"
     >
@@ -39,11 +43,11 @@ const ResumePage = () => {
         <HiOutlineArrowSmRight />
       </button>
 
-      <div className="grid gap-4">
+      <div className="flex flex-col lg:items-center gap-4 overflow-auto">
         <BuilderForm {...{ open, setOpen }} />
 
-        <div className="card !p-0">
-          <div className="p-8 pb-0 h-screen" ref={myResumeRef}>
+        <div className="card !p-0 flex w-[1000px]">
+          <div className="flex" ref={myResumeRef}>
             <Template />
           </div>
         </div>
