@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MdLibraryBooks } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
 import { HiHome } from "react-icons/hi";
+import Image from "next/image";
 
 type Props = {
   ActionComponent?: React.ReactNode;
@@ -28,7 +29,13 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
       <RSNavbar className="flex items-center justify-center gap-4 w-full">
         <div className="max-w-full w-[1536px] sm:p-1 flex items-center">
           <RSNavbar.Brand as={Link} href="/" className="!px-0">
-            <img src="/logo.svg" className="w-20 mt-1 sm:mt-0 sm:w-32" />
+            <Image
+              width={100}
+              height={100}
+              src="/logo.svg"
+              className="w-20 mt-1 sm:mt-0 sm:w-32"
+              alt="Resfolio logo"
+            />
           </RSNavbar.Brand>
 
           <div className="flex-1" />

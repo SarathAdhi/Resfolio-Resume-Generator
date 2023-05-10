@@ -2,6 +2,7 @@ import PageLayout from "@layouts/PageLayout";
 import Link from "next/link";
 import { Button, Divider } from "rsuite";
 import ResumeTips from "@modules/Home/ResumeTips";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -26,9 +27,12 @@ export default function Home() {
             </div>
           </div>
 
-          <img
+          <Image
+            width={500}
+            height={500}
             className="hero-section-md md:hero-section w-80 border border-black rounded-md"
-            src="templates/template-1.png"
+            src="/templates/template-1.png"
+            alt="Hero section template image"
           />
         </div>
 

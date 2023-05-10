@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Footer as _Footer } from "rsuite";
@@ -7,7 +8,13 @@ const Footer = () => {
     <_Footer className="w-full bg-[#111] text-white space-y-4">
       <div className="p-4 flex flex-col items-center justify-center gap-8">
         <div className="max-w-full w-[800px] flex flex-col items-center justify-center gap-4">
-          <img className="w-40" src="/logo.svg" />
+          <Image
+            width={100}
+            height={100}
+            className="w-40"
+            src="/logo.svg"
+            alt="Resfolio logo"
+          />
 
           <p className="text-center">
             Resfolio is the ultimate online resume builder for job seekers who
