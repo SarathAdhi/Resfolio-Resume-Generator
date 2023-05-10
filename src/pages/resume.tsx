@@ -1,6 +1,6 @@
 import PageLayout from "@layouts/PageLayout";
 import React, { useRef, useState } from "react";
-import { Button, Nav, Tooltip, Whisper } from "rsuite";
+import { Nav, Tooltip, Whisper } from "rsuite";
 import { useReactToPrint } from "react-to-print";
 import BuilderForm from "@modules/Resume/BuilderForm";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
@@ -20,6 +20,7 @@ const ResumePage = () => {
 
   return (
     <PageLayout
+      title="Resume Builder"
       ActionComponent={
         <Whisper
           placement="bottom"

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <PageLayout className="flex-c gap-10">
+    <PageLayout title="Home" className="flex-c gap-10">
       <h1 className="text-4xl md:text-6xl text-center text-blue-600 font-serif leading-none">
         The Ultimate Online Resume Builder
       </h1>
