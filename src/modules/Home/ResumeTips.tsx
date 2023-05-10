@@ -36,19 +36,10 @@ const ResumeTips = () => {
     <div className="w-full grid gap-4">
       <h3 className="text-center">Tips to improve your Resume</h3>
 
-      <div className="flex flex-col md:flex-row items-center  justify-between gap-8">
-        <Nav
-          appearance="subtle"
-          vertical
-          activeKey={active}
-          onSelect={setActive}
-        >
+      <div className="flex flex-col md:flex-row sm:items-center justify-between gap-8">
+        <Nav appearance="tabs" vertical activeKey={active} onSelect={setActive}>
           {tips.map((tip) => (
-            <Nav.Item
-              className="uppercase"
-              key={tip.title}
-              eventKey={tip.title}
-            >
+            <Nav.Item key={tip.title} eventKey={tip.title}>
               {tip.title}
             </Nav.Item>
           ))}

@@ -1,6 +1,6 @@
 import PageLayout from "@layouts/PageLayout";
 import Link from "next/link";
-import { Button } from "rsuite";
+import { Button, Divider } from "rsuite";
 import ResumeTips from "@modules/Home/ResumeTips";
 
 export default function Home() {
@@ -30,6 +30,25 @@ export default function Home() {
             className="hero-section-md md:hero-section w-80 border border-black rounded-md"
             src="templates/template-1.png"
           />
+        </div>
+
+        <div className="space-y-4">
+          <Divider className="w-full" />
+          <p className="text-center text-lg">
+            Resfolio is the ultimate online resume builder for job seekers who
+            want to create a professional and impactful resume in minutes. With
+            Resfolio, you can easily build a custom resume that highlights your
+            skills, experience, and achievements, and showcases your unique
+            brand. Our user-friendly interface and customization options make it
+            easy to create a resume that stands out from the crowd. With
+            Resfolio, you don't have to worry about formatting or design - we
+            take care of that for you. You can focus on creating compelling
+            content that tells your story and demonstrates your value to
+            potential employers. Whether you're just starting your career or
+            looking to make a change, Resfolio is the perfect tool to help you
+            land your dream job.
+          </p>
+          <Divider className="w-full" />
         </div>
 
         <ResumeTips />
