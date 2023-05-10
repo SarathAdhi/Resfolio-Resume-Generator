@@ -35,7 +35,7 @@ export default function Home() {
         <div className="space-y-4">
           <Divider className="w-full" />
           <p className="text-center text-lg">
-            Resfolio is the ultimate online resume builder for job seekers who
+            {`Resfolio is the ultimate online resume builder for job seekers who
             want to create a professional and impactful resume in minutes. With
             Resfolio, you can easily build a custom resume that highlights your
             skills, experience, and achievements, and showcases your unique
@@ -46,7 +46,7 @@ export default function Home() {
             content that tells your story and demonstrates your value to
             potential employers. Whether you're just starting your career or
             looking to make a change, Resfolio is the perfect tool to help you
-            land your dream job.
+            land your dream job.`}
           </p>
           <Divider className="w-full" />
         </div>
