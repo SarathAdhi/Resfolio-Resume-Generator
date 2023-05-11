@@ -8,6 +8,7 @@ import Script from "next/script";
 import ReactGA from "react-ga4";
 import { useAuthState } from "@hooks/useAuthState";
 import { useAuthStore } from "@utils/store";
+import { Toaster } from "react-hot-toast";
 
 const GOOGLE_MEASUREMENT_ID = process.env.GOOGLE_MEASUREMENT_ID!;
 ReactGA.initialize(GOOGLE_MEASUREMENT_ID);
@@ -71,6 +72,8 @@ export default function App({ Component, pageProps }: AppProps) {
             `,
         }}
       />
+
+      <Toaster position="top-center" reverseOrder={false} />
 
       <CustomProvider theme="light">
         <Component {...pageProps} />

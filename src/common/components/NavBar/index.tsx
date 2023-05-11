@@ -16,16 +16,19 @@ type Props = {
 
 const pages = [
   {
+    isAuth: false,
     name: "Home",
     href: "/",
     Icon: HiHome,
   },
   {
+    isAuth: false,
     name: "Resume Builder",
     href: "/resume",
     Icon: MdLibraryBooks,
   },
   {
+    isAuth: true,
     name: "My Profile",
     href: "/profile",
     Icon: HiUser,
@@ -33,7 +36,7 @@ const pages = [
 ];
 
 const Navbar: React.FC<Props> = ({ ActionComponent }) => {
-  const { user, loading } = useAuthState();
+  const { user } = useAuthState();
   const { handleLogin } = useFirebaseLogin();
 
   return (
@@ -56,20 +59,24 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
             className="!text-base !font-semibold flex items-center"
             pullRight
           >
-            {pages.map(({ Icon, name, href }) => (
-              <Whisper
-                key={name}
-                placement="bottom"
-                speaker={<Tooltip>{name}</Tooltip>}
-              >
-                <Nav.Item
-                  className="!hidden sm:!flex"
-                  as={Link}
-                  href={href}
-                  icon={<Icon size={20} />}
-                />
-              </Whisper>
-            ))}
+            {pages.map(({ Icon, name, href, isAuth }) => {
+              if (isAuth && !user) return;
+
+              return (
+                <Whisper
+                  key={name}
+                  placement="bottom"
+                  speaker={<Tooltip>{name}</Tooltip>}
+                >
+                  <Nav.Item
+                    className="!hidden sm:!flex"
+                    as={Link}
+                    href={href}
+                    icon={<Icon size={20} />}
+                  />
+                </Whisper>
+              );
+            })}
 
             {!user && (
               <Whisper placement="bottom" speaker={<Tooltip>Login</Tooltip>}>

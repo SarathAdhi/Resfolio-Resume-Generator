@@ -24,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-ga4": "^2.1.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
     "react-to-print": "^2.14.12",
     "rsuite": "^5.33.0",
