@@ -7,8 +7,13 @@ import { HiOutlineArrowSmRight } from "react-icons/hi";
 import { FiDownload } from "react-icons/fi";
 import { useStore } from "@utils/store";
 import { useRouter } from "next/router";
+import withAuth from "@hoc/withAuth";
 
-const ResumePage = () => {
+type Props = {
+  title?: string;
+};
+
+const ResumePage: React.FC<Props> = ({ title = "Resume Builder" }) => {
   const myResumeRef = useRef(null);
 
   const [open, setOpen] = useState(false);
@@ -23,7 +28,7 @@ const ResumePage = () => {
   const uuid = `${router.query?.id}`;
 
   return (
-    <PageLayout title="Resume Builder" className="flex flex-col gap-4">
+    <PageLayout title={title} className="flex flex-col gap-4">
       <button
         onClick={() => setOpen(true)}
         className="fixed left-0 top-[50%] bottom-[50%] h-10 rounded-r-lg text-2xl font-bold bg-gray-500 text-white"
@@ -55,4 +60,5 @@ const ResumePage = () => {
   );
 };
 
-export default ResumePage;
+export { ResumePage as UnAuthResumePage };
+export default withAuth(ResumePage);

@@ -41,7 +41,7 @@ const PageLayout: React.FC<Props> = ({
         <NavBar ActionComponent={ActionComponent} />
 
         <Content
-          className={clsx("p-2 sm:p-4 max-w-full w-[1536px]", className)}
+          className={clsx("p-2 sm:p-4 mb-4 max-w-full w-[1536px]", className)}
         >
           {children}
         </Content>

@@ -1,18 +1,22 @@
-import PageLayout from "@layouts/PageLayout";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import ShortUniqueId from "short-unique-id";
+import { UnAuthResumePage } from "@pages/resume/[id]";
+import { useAuthState } from "@hooks/useAuthState";
 
 const Resume = () => {
   const router = useRouter();
   const uid = new ShortUniqueId({ length: 10 });
+  const { user } = useAuthState();
 
   useEffect(() => {
-    const uuid = uid();
-    router.replace(`/resume/${uuid}`);
+    if (user) {
+      const uuid = uid();
+      router.replace(`/resume/${uuid}`);
+    }
   }, []);
 
-  return <PageLayout title="Resume"></PageLayout>;
+  return <UnAuthResumePage title="R" />;
 };
 
 export default Resume;
