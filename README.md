@@ -65,3 +65,64 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+# Contributions
+
+## Create a branch
+
+Change to the repository directory on your computer (if you are not already there):
+
+```
+cd Resfolio-Resume-Genrator
+```
+
+Now create a branch using the `git switch` command:
+
+```
+git switch -c your-new-branch-name
+```
+
+For example:
+
+```
+git switch -c new-template-3
+```
+
+## Make necessary changes and commit those changes
+
+If you go to the project directory and execute the command `git status`, you'll see there are changes.
+
+Add those changes to the branch you just created using the `git add` command:
+
+```
+git add .
+```
+
+Now commit those changes using the `git commit` command:
+
+```
+git commit -m "relevant-commit-title"
+```
+
+## Push changes to GitHub
+
+Push your changes using the command `git push`:
+
+```
+git push -u origin your-branch-name
+```
+
+## Submit your changes for review
+
+If you go to your repository on GitHub, you'll see a `Pull requests` button. Click on that button and create a `new Pull request`.
+
+<img  src="https://github.com/SarathAdhi/Resfolio-Resume-Generator/assets/91727830/3719e51c-80ea-4c27-b50e-4111f76f2c89" alt="create a pull request" />
+
+<br />
+<br />
+
+Now submit the pull request.
+
+`NOTE: Give appropriate title and a brief description with images.`
+
+Soon I'll be merging all your changes into the main branch of this project. You will get a notification email once the changes have been merged.
