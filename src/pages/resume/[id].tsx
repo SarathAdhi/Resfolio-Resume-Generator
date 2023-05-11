@@ -28,7 +28,7 @@ const ResumePage: React.FC<Props> = ({ title = "Resume Builder" }) => {
   const uuid = `${router.query?.id}`;
 
   return (
-    <PageLayout title={title} className="flex flex-col gap-4">
+    <PageLayout title={`${title} - ${uuid}`} className="flex flex-col gap-4">
       <button
         onClick={() => setOpen(true)}
         className="fixed left-0 top-[50%] bottom-[50%] h-10 rounded-r-lg text-2xl font-bold bg-gray-500 text-white"

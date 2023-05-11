@@ -16,7 +16,7 @@ const Resume = () => {
     }
   }, []);
 
-  return <UnAuthResumePage title="R" />;
+  return <UnAuthResumePage title="Resume" />;
 };
 
 export default Resume;
