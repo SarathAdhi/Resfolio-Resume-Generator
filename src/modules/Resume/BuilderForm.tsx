@@ -13,7 +13,7 @@ import ExtraCurricular from "./components/ExtraCurricular";
 import Templates from "./components/Templates";
 import { useAuthState } from "@hooks/useAuthState";
 import { addDoc, updateDoc } from "@backend/lib";
-import { Templates as _Temp } from "@utils/constants";
+import { Templates as _Temp, initialFormValue } from "@utils/constants";
 import Template_1 from "./Templates/Template_1";
 
 export const Grid: React.FC<Component> = ({ className, children }) => (
@@ -53,7 +53,7 @@ const BuilderForm: React.FC<Props> = ({
   const resume = resumes.find((e) => e.uuid === uuid);
 
   const [resumeName, setResumeName] = useState(
-    resume ? resume.resumeName : "resume-" + resumes.length + 1
+    resume ? resume.resumeName : "resume-" + uuid
   );
 
   useEffect(() => {
@@ -67,6 +67,9 @@ const BuilderForm: React.FC<Props> = ({
       );
 
       setTemplate(TemplateComp ? TemplateComp : Template_1, resume.template);
+    } else {
+      setFormValues(initialFormValue);
+      setTemplate(Template_1, "template-1");
     }
   }, []);
 

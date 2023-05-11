@@ -66,7 +66,7 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
                 <Whisper
                   key={name}
                   placement="bottom"
-                  speaker={<Tooltip>{name}</Tooltip>}
+                  speaker={<Tooltip className="text-center">{name}</Tooltip>}
                 >
                   <Nav.Item
                     className="!hidden sm:!flex"
@@ -79,7 +79,10 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
             })}
 
             {!user && (
-              <Whisper placement="bottom" speaker={<Tooltip>Login</Tooltip>}>
+              <Whisper
+                placement="bottom"
+                speaker={<Tooltip className="text-center">Login</Tooltip>}
+              >
                 <Nav.Item
                   className="!hidden sm:!flex"
                   onClick={handleLogin}
@@ -124,7 +127,9 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
 
             <Whisper
               placement="bottom"
-              speaker={<Tooltip>Star on GitHub</Tooltip>}
+              speaker={
+                <Tooltip className="text-center">Star on GitHub</Tooltip>
+              }
             >
               <Nav.Item
                 as={Link}

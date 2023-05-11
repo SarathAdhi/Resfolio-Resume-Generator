@@ -1,5 +1,5 @@
 import PageLayout from "@layouts/PageLayout";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button } from "rsuite";
 import { useReactToPrint } from "react-to-print";
 import BuilderForm from "@modules/Resume/BuilderForm";
@@ -26,6 +26,8 @@ const ResumePage: React.FC<Props> = ({ title = "Resume Builder" }) => {
 
   const router = useRouter();
   const uuid = `${router.query?.id}`;
+
+  useEffect(() => {}, [uuid]);
 
   return (
     <PageLayout title={`${title} - ${uuid}`} className="flex flex-col gap-4">
