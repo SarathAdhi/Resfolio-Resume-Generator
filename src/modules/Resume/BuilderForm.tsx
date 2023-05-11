@@ -29,14 +29,13 @@ const Tabs = [
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
+  DownloadButton: React.ReactNode;
 };
 
-const BuilderForm: React.FC<Props> = ({ open, setOpen }) => {
+const BuilderForm: React.FC<Props> = ({ open, setOpen, DownloadButton }) => {
   const { formValues, setFormValues } = useStore();
   const [active, setActive] = useState("about");
   const [placement, setPlacement] = useState<"left" | "right">("left");
-
-  // console.log({ formValues });
 
   return (
     <>
@@ -49,7 +48,10 @@ const BuilderForm: React.FC<Props> = ({ open, setOpen }) => {
       >
         <Drawer.Header>
           <Drawer.Title>Edit Details</Drawer.Title>
-          <Drawer.Actions>
+
+          <Drawer.Actions className="flex">
+            {DownloadButton}
+
             <Button
               className="lg:!inline-block !hidden"
               appearance="ghost"

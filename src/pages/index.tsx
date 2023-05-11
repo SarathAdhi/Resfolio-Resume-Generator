@@ -23,7 +23,7 @@ export default function Home() {
                 Create a Resume
               </Button>
 
-              <span>No Regristration required</span>
+              <span className="text-center">No Registration required</span>
             </div>
           </div>
 

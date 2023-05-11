@@ -1,6 +1,6 @@
 import PageLayout from "@layouts/PageLayout";
 import React, { useRef, useState } from "react";
-import { Nav, Tooltip, Whisper } from "rsuite";
+import { Button, Nav, Tooltip, Whisper } from "rsuite";
 import { useReactToPrint } from "react-to-print";
 import BuilderForm from "@modules/Resume/BuilderForm";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
@@ -45,7 +45,18 @@ const ResumePage = () => {
       </button>
 
       <div className="flex flex-col lg:items-center gap-4 overflow-auto">
-        <BuilderForm {...{ open, setOpen }} />
+        <BuilderForm
+          DownloadButton={
+            <Button
+              className="!flex md:!hidden !bg-green-500 !text-white !rounded-md"
+              onClick={downloadPdfDocument}
+              startIcon={<FiDownload size={20} />}
+            >
+              Download Resume
+            </Button>
+          }
+          {...{ open, setOpen }}
+        />
 
         <div className="card !p-0 flex w-[1000px]">
           <div className="flex" ref={myResumeRef}>
