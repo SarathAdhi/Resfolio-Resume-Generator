@@ -1,4 +1,4 @@
-# [ResFolio](https://refolio-resume.vercel.app/?ref=github)
+# [ResFolio](https://resfolio.vercel.app/?ref=github)
 
 ![image](https://github.com/SarathAdhi/Resfolio-Resume-Generator/assets/91727830/893a2e0b-69c6-4ecd-b666-56a4fcc0e06c)
 
