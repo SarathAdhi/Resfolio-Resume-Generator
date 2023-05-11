@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   useEffect(() => {
-    if (user) appLoadingFetchAction();
+    appLoadingFetchAction();
   }, [user]);
 
   useEffect(() => {
