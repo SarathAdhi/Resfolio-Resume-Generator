@@ -1,6 +1,5 @@
 import React from "react";
 import { Templates as _Templates } from "@utils/constants";
-import Image from "next/image";
 import clsx from "clsx";
 import { useStore } from "@utils/store";
 
@@ -8,7 +7,7 @@ const Templates = () => {
   const { setTemplate, activeTemplate } = useStore();
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid sm:grid-cols-3 gap-4">
       {_Templates.map((Component, index) => {
         const compName = `template-${index + 1}`;
 
@@ -21,10 +20,8 @@ const Templates = () => {
             )}
             onClick={() => setTemplate(Component, compName)}
           >
-            <Image
+            <img
               className="rounded-md"
-              width={500}
-              height={500}
               src={`/templates/${compName}.png`}
               alt={`Template ${index + 1}`}
             />

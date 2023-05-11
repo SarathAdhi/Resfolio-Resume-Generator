@@ -22,6 +22,7 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
     <>
       <Grid>
         <Input
+          value={rowValue.e_college}
           label="College name"
           name="e_college"
           placeholder="Enter your College Name"
@@ -29,6 +30,7 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <Input
+          value={rowValue.e_college}
           label="Degree"
           name="e_degree"
           placeholder="Enter your Degree"
@@ -36,6 +38,7 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.e_start)}
           block
           label="Start Date"
           name="e_start"
@@ -47,6 +50,7 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.e_end)}
           block
           label="End Date"
           name="e_end"
@@ -56,6 +60,7 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <Input
+          value={rowValue.e_grade}
           label="Grade"
           name="e_grade"
           placeholder="Enter your Grade"
@@ -69,25 +74,24 @@ const EducationItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
   );
 };
 
-const EducationInputControl: React.FC<{
+type ControlProps = {
+  value: EducationProps[];
   onChange: (value: React.SetStateAction<EducationProps[]>) => void;
-}> = ({ onChange }) => {
-  const [EducationDetails, setEducationDetails] = React.useState<
-    EducationProps[]
-  >([
-    {
-      e_college: "",
-      e_degree: "",
-      e_end: "",
-      e_grade: "",
-      e_start: "",
-    },
-  ]);
+};
+
+const EducationInputControl: React.FC<ControlProps> = ({
+  onChange,
+  value,
+  ...rest
+}) => {
+  const [EducationDetails, setEducationDetails] =
+    React.useState<EducationProps[]>(value);
 
   const handleChangeEducationDetails = (
     nextEducationDetails: React.SetStateAction<EducationProps[]>
   ) => {
-    console.log({ nextEducationDetails });
+    console.log({ ...rest });
+
     setEducationDetails(nextEducationDetails);
     onChange?.(nextEducationDetails);
   };

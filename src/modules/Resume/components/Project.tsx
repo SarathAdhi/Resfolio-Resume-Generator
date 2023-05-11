@@ -23,6 +23,7 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
     <>
       <Grid>
         <Input
+          value={rowValue.p_name}
           label="Project Name"
           name="p_name"
           placeholder="Enter your Project Name"
@@ -30,6 +31,7 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <Input
+          value={rowValue.p_link}
           label="Link"
           name="p_link"
           placeholder="Enter your Project Link"
@@ -37,6 +39,7 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.p_start)}
           block
           label="Start Date"
           name="p_start"
@@ -48,6 +51,7 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.p_end)}
           block
           label="End Date"
           name="p_end"
@@ -58,6 +62,7 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
       </Grid>
 
       <TextArea
+        value={rowValue.p_description}
         label="Description"
         name="p_description"
         placeholder="Enter your Project Description"
@@ -69,18 +74,14 @@ const ProjectItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
   );
 };
 
-const ProjectInputControl: React.FC<{
+type ControlProps = {
+  value: ProjectProps[];
   onChange: (value: React.SetStateAction<ProjectProps[]>) => void;
-}> = ({ onChange }) => {
-  const [ProjectDetails, setProjectDetails] = React.useState<ProjectProps[]>([
-    {
-      p_name: "",
-      p_description: "",
-      p_link: "",
-      p_start: "",
-      p_end: "",
-    },
-  ]);
+};
+
+const ProjectInputControl: React.FC<ControlProps> = ({ onChange, value }) => {
+  const [ProjectDetails, setProjectDetails] =
+    React.useState<ProjectProps[]>(value);
 
   const handleChangeProjectDetails = (
     nextProjectDetails: React.SetStateAction<ProjectProps[]>

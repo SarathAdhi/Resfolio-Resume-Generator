@@ -29,9 +29,9 @@ const Template_1 = () => {
   return (
     <div
       id="template-1"
-      className="p-8 !pb-0 text-black min-h-screen grid grid-cols-8 gap-4"
+      className="p-8 !pb-0 text-black min-h-screen grid grid-cols-10 gap-4"
     >
-      <div className="col-span-3 flex-shrink-0 h-full p-2 flex-c gap-4 bg-[#f4f4f4] rounded-t-lg border-2 border-gray-500 border-b-0">
+      <div className="col-span-4 flex-shrink-0 p-2 flex-c gap-4 bg-[#f4f4f4] rounded-t-lg border-2 border-gray-500 border-b-0">
         {image && <img src={image} className="shadow-lg rounded-md" />}
 
         <div className="-mt-2 flex-c">
@@ -101,11 +101,11 @@ const Template_1 = () => {
         <div className="w-full grid gap-4">
           <h4 className="title">Skills</h4>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1">
             {skills.map((skill, index) => (
               <span
                 key={skill + index}
-                className="last:flex-none flex-auto text-base text-center py-1 px-2 bg-blue-800 text-white font-medium rounded-md"
+                className="last:flex-none flex-auto text-base text-center p-1 bg-blue-800 text-white font-medium rounded-md"
               >
                 {skill}
               </span>
@@ -114,7 +114,7 @@ const Template_1 = () => {
         </div>
       </div>
 
-      <div className="col-span-5 w-full flex flex-col gap-8">
+      <div className="col-span-6 w-full flex flex-col gap-8">
         <div className="grid gap-2">
           <h4 className="title">Education History</h4>
 

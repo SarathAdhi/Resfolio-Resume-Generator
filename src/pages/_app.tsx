@@ -6,17 +6,31 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import ReactGA from "react-ga4";
+import { useAuthState } from "@hooks/useAuthState";
+import { useAuthStore } from "@utils/store";
 
 const GOOGLE_MEASUREMENT_ID = process.env.GOOGLE_MEASUREMENT_ID!;
 ReactGA.initialize(GOOGLE_MEASUREMENT_ID);
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [hydrated, setHydrated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { user, loading } = useAuthState();
+  const { getUserResumes } = useAuthStore();
+
+  async function appLoadingFetchAction() {
+    if (user) {
+      localStorage.setItem("token", user.uid);
+      await getUserResumes();
+    }
+
+    setIsLoading(false);
+  }
 
   useEffect(() => {
-    setHydrated(true);
-  }, []);
+    if (user) appLoadingFetchAction();
+  }, [user]);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -34,13 +48,13 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  if (!hydrated) return <></>;
+  if (isLoading || loading) return <></>;
 
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-7H3GVPPD7N"
+        src="https://www.googletagmanager.com/gtag/js?id=G-PRDRFKT1Q6"
       />
 
       <Script
@@ -51,7 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-7H3GVPPD7N', {
+            gtag('config', 'G-PRDRFKT1Q6', {
               page_path: window.location.pathname,
             });
             `,

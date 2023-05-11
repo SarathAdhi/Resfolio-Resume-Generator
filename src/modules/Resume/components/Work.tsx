@@ -22,6 +22,7 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
     <>
       <Grid>
         <Input
+          value={rowValue.w_company}
           label="Company Name"
           name="w_company"
           placeholder="Enter your Company Name"
@@ -29,6 +30,7 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <Input
+          value={rowValue.w_role}
           label="Role"
           name="w_role"
           placeholder="Enter your Role"
@@ -36,6 +38,7 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <Input
+          value={rowValue.w_link}
           label="Website"
           name="w_link"
           placeholder="Enter your Company Website"
@@ -43,6 +46,7 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.w_start)}
           block
           label="Start Date"
           name="w_start"
@@ -54,6 +58,7 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
         />
 
         <DatePicker
+          value={new Date(rowValue.w_end)}
           block
           label="End Date"
           name="w_end"
@@ -68,18 +73,13 @@ const WorkItem: React.FC<Props> = ({ rowValue, onChange, rowIndex }) => {
   );
 };
 
-const WorkInputControl: React.FC<{
+type ControlProps = {
+  value: WorkProps[];
   onChange: (value: React.SetStateAction<WorkProps[]>) => void;
-}> = ({ onChange }) => {
-  const [WorkDetails, setWorkDetails] = React.useState<WorkProps[]>([
-    {
-      w_company: "",
-      w_role: "",
-      w_end: "",
-      w_link: "",
-      w_start: "",
-    },
-  ]);
+};
+
+const WorkInputControl: React.FC<ControlProps> = ({ onChange, value }) => {
+  const [WorkDetails, setWorkDetails] = React.useState<WorkProps[]>(value);
 
   const handleChangeWorkDetails = (
     nextWorkDetails: React.SetStateAction<WorkProps[]>

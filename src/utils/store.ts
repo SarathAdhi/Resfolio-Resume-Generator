@@ -1,5 +1,10 @@
 import { create } from "zustand";
 import { Templates, skills } from "./constants";
+import { signOut } from "firebase/auth";
+import { auth } from "@backend/db";
+import { filterDoc } from "@backend/lib";
+import { where } from "firebase/firestore";
+import { User } from "types/user";
 
 export type EducationProps = {
   e_degree: string;
@@ -130,4 +135,39 @@ export const useStore = create<UseStoreProps>((set) => ({
   Template: Templates[0],
   activeTemplate: "template-1",
   setTemplate: (Template, activeTemplate) => set({ Template, activeTemplate }),
+}));
+
+type UseAuthStoreProps = {
+  user: User | null;
+  resumes: ({
+    resumeName: string;
+    uuid: string;
+    id: string;
+    template: string;
+  } & UseStoreProps["formValues"])[];
+  logout: () => void;
+  getUserResumes: () => void;
+};
+
+export const useAuthStore = create<UseAuthStoreProps>((set) => ({
+  user: null,
+  resumes: [],
+
+  logout: () => {
+    localStorage.removeItem("token");
+    signOut(auth);
+
+    set({ resumes: [] });
+  },
+
+  getUserResumes: async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    let resumes = await filterDoc("resumes", where("user", "==", token));
+
+    resumes.reverse();
+
+    set({ resumes });
+  },
 }));

@@ -37,11 +37,11 @@ const PageLayout: React.FC<Props> = ({
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <Container className="flex flex-col items-center gap-8 min-h-screen">
+      <Container className="flex flex-col items-center min-h-screen">
         <NavBar ActionComponent={ActionComponent} />
 
         <Content
-          className={clsx("p-2 sm:p-4 !pt-0 max-w-full w-[1536px]", className)}
+          className={clsx("p-2 sm:p-4 max-w-full w-[1536px]", className)}
         >
           {children}
         </Content>

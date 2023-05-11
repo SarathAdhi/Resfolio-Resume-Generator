@@ -3,8 +3,12 @@ import { Navbar as RSNavbar, Nav, Header, Tooltip, Whisper } from "rsuite";
 import Link from "next/link";
 import { MdLibraryBooks } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
-import { HiHome } from "react-icons/hi";
+import { HiHome, HiUser } from "react-icons/hi";
 import Image from "next/image";
+import { BiLogIn } from "react-icons/bi";
+import { useFirebaseLogin } from "@hooks/useFirebaseLogin";
+import { useAuthState } from "@hooks/useAuthState";
+import { FaUser, FaUserAlt } from "react-icons/fa";
 
 type Props = {
   ActionComponent?: React.ReactNode;
@@ -21,9 +25,17 @@ const pages = [
     href: "/resume",
     Icon: MdLibraryBooks,
   },
+  {
+    name: "My Profile",
+    href: "/profile",
+    Icon: HiUser,
+  },
 ];
 
 const Navbar: React.FC<Props> = ({ ActionComponent }) => {
+  const { user, loading } = useAuthState();
+  const { handleLogin } = useFirebaseLogin();
+
   return (
     <Header className="w-full z-50 sticky top-0">
       <RSNavbar className="flex items-center justify-center gap-4 w-full">
@@ -41,7 +53,7 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
           <div className="flex-1" />
 
           <Nav
-            className="!text-base !font-semibold flex items-center gap-1"
+            className="!text-base !font-semibold flex items-center"
             pullRight
           >
             {pages.map(({ Icon, name, href }) => (
@@ -55,11 +67,19 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
                   as={Link}
                   href={href}
                   icon={<Icon size={20} />}
-                >
-                  {/* {name} */}
-                </Nav.Item>
+                />
               </Whisper>
             ))}
+
+            {!user && (
+              <Whisper placement="bottom" speaker={<Tooltip>Login</Tooltip>}>
+                <Nav.Item
+                  className="!hidden sm:!flex"
+                  onClick={handleLogin}
+                  icon={<BiLogIn size={20} />}
+                />
+              </Whisper>
+            )}
 
             <Nav.Menu
               title="More"
