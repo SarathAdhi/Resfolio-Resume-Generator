@@ -8,7 +8,6 @@ import Image from "next/image";
 import { BiLogIn } from "react-icons/bi";
 import { useFirebaseLogin } from "@hooks/useFirebaseLogin";
 import { useAuthState } from "@hooks/useAuthState";
-import { FaUser, FaUserAlt } from "react-icons/fa";
 
 type Props = {
   ActionComponent?: React.ReactNode;
@@ -97,17 +96,36 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
               className="!p-0 sm:!hidden !text-sm"
             >
               <div className="space-y-2 p-2">
-                {pages.map(({ Icon, name, href }) => (
-                  <Nav.Item
-                    key={name}
-                    as={Link}
-                    className="!p-2 !rounded-md !w-full !flex items-center gap-2"
-                    href={href}
-                    icon={<Icon size={20} />}
+                {pages.map(({ Icon, name, href, isAuth }) => {
+                  if (isAuth && !user) return;
+
+                  return (
+                    <Nav.Item
+                      key={name}
+                      as={Link}
+                      className="!p-2 !rounded-md !w-full !flex items-center gap-2"
+                      href={href}
+                      icon={<Icon size={20} />}
+                    >
+                      {name}
+                    </Nav.Item>
+                  );
+                })}
+
+                {!user && (
+                  <Whisper
+                    placement="bottom"
+                    speaker={<Tooltip className="text-center">Login</Tooltip>}
                   >
-                    {name}
-                  </Nav.Item>
-                ))}
+                    <Nav.Item
+                      onClick={handleLogin}
+                      icon={<BiLogIn size={20} />}
+                      className="!p-2 !rounded-md !w-full !flex items-center gap-2"
+                    >
+                      Login
+                    </Nav.Item>
+                  </Whisper>
+                )}
 
                 <Nav.Item
                   as={Link}

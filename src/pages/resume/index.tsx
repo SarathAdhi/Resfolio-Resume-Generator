@@ -14,7 +14,7 @@ const Resume = () => {
       const uuid = uid();
       router.replace(`/resume/${uuid}`);
     }
-  }, []);
+  }, [user]);
 
   return <UnAuthResumePage title="Resume" />;
 };

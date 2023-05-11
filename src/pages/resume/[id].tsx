@@ -13,7 +13,7 @@ type Props = {
   title?: string;
 };
 
-const ResumePage: React.FC<Props> = ({ title = "Resume Builder" }) => {
+const ResumePage: React.FC<Props> = ({ title }) => {
   const myResumeRef = useRef(null);
 
   const [open, setOpen] = useState(false);
@@ -30,7 +30,10 @@ const ResumePage: React.FC<Props> = ({ title = "Resume Builder" }) => {
   useEffect(() => {}, [uuid]);
 
   return (
-    <PageLayout title={`${title} - ${uuid}`} className="flex flex-col gap-4">
+    <PageLayout
+      title={title || `Resume - ${uuid}`}
+      className="flex flex-col gap-4"
+    >
       <button
         onClick={() => setOpen(true)}
         className="fixed left-0 top-[50%] bottom-[50%] h-10 rounded-r-lg text-2xl font-bold bg-gray-500 text-white"
