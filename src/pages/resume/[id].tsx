@@ -1,33 +1,60 @@
 import PageLayout from "@layouts/PageLayout";
 import React, { useRef, useState, useEffect } from "react";
-import { Button } from "rsuite";
+import { Button, Loader } from "rsuite";
 import { useReactToPrint } from "react-to-print";
 import BuilderForm from "@modules/Resume/BuilderForm";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
 import { FiDownload } from "react-icons/fi";
-import { useStore } from "@utils/store";
+import { useAuthStore, useStore } from "@utils/store";
 import { useRouter } from "next/router";
 import withAuth from "@hoc/withAuth";
+import Template_1 from "@modules/Resume/Templates/Template_1";
+import { Templates as _Temp, initialFormValue } from "@utils/constants";
 
 type Props = {
   title?: string;
 };
 
 const ResumePage: React.FC<Props> = ({ title }) => {
+  const router = useRouter();
+  const uuid = `${router.query?.id}`;
+
+  const { Template, setFormValues, setTemplate } = useStore();
+  const { resumes } = useAuthStore();
+
   const myResumeRef = useRef(null);
 
   const [open, setOpen] = useState(false);
-
-  const { Template } = useStore();
+  const [isInitializingTemplate, setIsInitializingTemplate] = useState(true);
 
   const downloadPdfDocument = useReactToPrint({
     content: () => myResumeRef.current,
   });
 
-  const router = useRouter();
-  const uuid = `${router.query?.id}`;
+  function initializeTemplate() {
+    const resume = resumes.find((e) => e.uuid === uuid);
 
-  useEffect(() => {}, [uuid]);
+    if (resume) {
+      let newFormValues = resume;
+
+      setFormValues(newFormValues);
+
+      const TemplateComp = _Temp.find(
+        (_, i) => `template-${i + 1}` === resume.template
+      );
+
+      setTemplate(TemplateComp ? TemplateComp : Template_1, resume.template);
+    } else {
+      setFormValues(initialFormValue);
+      setTemplate(Template_1, "template-1");
+    }
+
+    setIsInitializingTemplate(false);
+  }
+
+  useEffect(() => {
+    initializeTemplate();
+  }, []);
 
   return (
     <PageLayout
@@ -57,7 +84,7 @@ const ResumePage: React.FC<Props> = ({ title }) => {
 
         <div className="card !p-0 flex w-[1000px]">
           <div className="flex" ref={myResumeRef}>
-            <Template />
+            {isInitializingTemplate ? <Loader center /> : <Template />}
           </div>
         </div>
       </div>

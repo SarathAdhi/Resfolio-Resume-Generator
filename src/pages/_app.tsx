@@ -1,7 +1,7 @@
 import "@styles/globals.css";
 import "rsuite/dist/rsuite.min.css";
 import type { AppProps } from "next/app";
-import { CustomProvider } from "rsuite";
+import { CustomProvider, Loader } from "rsuite";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -30,8 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   useEffect(() => {
-    appLoadingFetchAction();
-  }, [user]);
+    if (!loading) appLoadingFetchAction();
+  }, [loading]);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  if (isLoading || loading) return <></>;
+  if (isLoading || loading) return <Loader backdrop size="md" vertical />;
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Component } from "types/component";
 import clsx from "clsx";
 import { Form, Input, Nav } from "rsuite";
@@ -13,8 +13,7 @@ import ExtraCurricular from "./components/ExtraCurricular";
 import Templates from "./components/Templates";
 import { useAuthState } from "@hooks/useAuthState";
 import { addDoc, updateDoc } from "@backend/lib";
-import { Templates as _Temp, initialFormValue } from "@utils/constants";
-import Template_1 from "./Templates/Template_1";
+import { Templates as _Temp } from "@utils/constants";
 
 export const Grid: React.FC<Component> = ({ className, children }) => (
   <div className={clsx("grid md:grid-cols-2 gap-4", className)}>{children}</div>
@@ -47,7 +46,7 @@ const BuilderForm: React.FC<Props> = ({
   const [active, setActive] = useState("about");
   const [placement, setPlacement] = useState<"left" | "right">("left");
 
-  const { formValues, setFormValues, activeTemplate, setTemplate } = useStore();
+  const { formValues, setFormValues, activeTemplate } = useStore();
   const { user } = useAuthState();
 
   const resume = resumes.find((e) => e.uuid === uuid);
@@ -55,23 +54,6 @@ const BuilderForm: React.FC<Props> = ({
   const [resumeName, setResumeName] = useState(
     resume ? resume.resumeName : "resume-" + uuid
   );
-
-  useEffect(() => {
-    if (resume) {
-      let newFormValues = resume;
-
-      setFormValues(newFormValues);
-
-      const TemplateComp = _Temp.find(
-        (_, i) => `template-${i + 1}` === resume.template
-      );
-
-      setTemplate(TemplateComp ? TemplateComp : Template_1, resume.template);
-    } else {
-      setFormValues(initialFormValue);
-      setTemplate(Template_1, "template-1");
-    }
-  }, []);
 
   return (
     <>

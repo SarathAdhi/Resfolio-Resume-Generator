@@ -1,7 +1,25 @@
 {
-  "name": "resume_generator",
+  "name": "resfolio",
+  "description": "Resfolio is the ultimate online resume builder for job seekers who want to create a professional and impactful resume in minutes.",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Sarath Adhithya",
+    "email": "s.sarathadhithya@gmail.com",
+    "url": "https://resfolio.vercel.app?ref=github"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SarathAdhi/Resfolio-Resume-Generator"
+  },
+  "license": "MIT",
+  "keywords": [
+    "resume",
+    "resume template",
+    "reswume builder",
+    "resume creator",
+    "resume generator"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
