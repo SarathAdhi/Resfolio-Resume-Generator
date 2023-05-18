@@ -33,21 +33,21 @@ export default function App({ Component, pageProps }: AppProps) {
     if (!loading) appLoadingFetchAction();
   }, [loading]);
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      ReactGA.send({
-        hitType: "pageview",
-        page: window.location.pathname,
-        title: document.title,
-      });
-    };
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     ReactGA.send({
+  //       hitType: "pageview",
+  //       page: window.location.pathname,
+  //       title: document.title,
+  //     });
+  //   };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+  //   router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange);
+  //   };
+  // }, [router.events]);
 
   if (isLoading || loading) return <Loader backdrop size="md" vertical />;
 

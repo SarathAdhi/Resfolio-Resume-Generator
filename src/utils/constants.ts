@@ -1,5 +1,6 @@
 import Template_1 from "@modules/Resume/Templates/Template_1";
 import Template_2 from "@modules/Resume/Templates/Template_2";
+import Template_3 from "@modules/Resume/Templates/Template_3";
 
 export const skills = [
   "ReactJS",
@@ -19,7 +20,7 @@ export const skills = [
   "Figma",
 ];
 
-export const Templates = [Template_1, Template_2];
+export const Templates = [Template_1, Template_2, Template_3];
 
 export const initialFormValue = {
   name: "Sarath Adhithya",

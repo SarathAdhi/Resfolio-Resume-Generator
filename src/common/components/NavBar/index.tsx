@@ -39,7 +39,7 @@ const Navbar: React.FC<Props> = ({ ActionComponent }) => {
   const { handleLogin } = useFirebaseLogin();
 
   return (
-    <Header className="w-full z-50 sticky top-0">
+    <Header className="w-full !z-[999] sticky top-0">
       <RSNavbar className="flex items-center justify-center gap-4 w-full">
         <div className="max-w-full w-[1536px] sm:p-1 flex items-center">
           <RSNavbar.Brand as={Link} href="/" className="!px-0">

@@ -32,7 +32,7 @@ svg {
   @apply flex-shrink-0;
 }
 
-.title {
+.title-space {
   @apply tracking-widest uppercase underline;
 }
 

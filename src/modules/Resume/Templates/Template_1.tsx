@@ -29,7 +29,7 @@ const Template_1 = () => {
   return (
     <div
       id="template-1"
-      className="p-8 !pb-0 text-black min-h-screen grid grid-cols-10 gap-4"
+      className="p-8 !pb-0 text-color min-h-screen grid grid-cols-10 gap-4"
     >
       <div className="col-span-4 flex-shrink-0 p-2 flex-c gap-4 bg-[#f4f4f4] rounded-t-lg border-2 border-gray-500 border-b-0">
         {image && <img src={image} className="shadow-lg rounded-md" />}
@@ -45,9 +45,12 @@ const Template_1 = () => {
         <div className="w-full">
           {phone && (
             <p className="flex-cr gap-4">
-              <BsTelephoneFill />
+              <BsTelephoneFill className="svg-color" />
 
-              <Link href={`tel:${phone}`} className="-mt-0.5 break-all">
+              <Link
+                href={`tel:${phone}`}
+                className="-mt-0.5 break-all link-color"
+              >
                 {phone}
               </Link>
             </p>
@@ -55,17 +58,20 @@ const Template_1 = () => {
 
           {address && (
             <p className="flex-cr gap-4">
-              <ImLocation />
+              <ImLocation className="svg-color" />
 
-              {address}
+              <span className="link-color">{address}</span>
             </p>
           )}
 
           {email && (
             <p className="flex-cr gap-4 ">
-              <MdEmail />
+              <MdEmail className="svg-color" />
 
-              <Link href={`mailto:${email}`} className="-mt-0.5 break-all">
+              <Link
+                href={`mailto:${email}`}
+                className="-mt-0.5 break-all link-color"
+              >
                 {email}
               </Link>
             </p>
@@ -73,9 +79,9 @@ const Template_1 = () => {
 
           {linkedin && (
             <p className="flex-cr !items-start gap-4 ">
-              <BsLinkedin />
+              <BsLinkedin className="svg-color" />
 
-              <Link href={linkedin} className="-mt-1 break-all">
+              <Link href={linkedin} className="-mt-1 break-all link-color">
                 {linkedin}
               </Link>
             </p>
@@ -83,9 +89,9 @@ const Template_1 = () => {
 
           {github && (
             <p className="flex-cr !items-start gap-4 ">
-              <BsGithub />
+              <BsGithub className="svg-color" />
 
-              <Link href={github} className="-mt-1 break-all">
+              <Link href={github} className="-mt-1 break-all link-color">
                 {github}
               </Link>
             </p>
@@ -93,19 +99,19 @@ const Template_1 = () => {
         </div>
 
         <div className="w-full grid gap-2">
-          <h4 className="title">Objective</h4>
+          <h4 className="title-space title">Objective</h4>
 
           <p className="text-justify">{objective}</p>
         </div>
 
         <div className="w-full grid gap-4">
-          <h4 className="title">Skills</h4>
+          <h4 className="title-space title">Skills</h4>
 
           <div className="flex flex-wrap items-center gap-1">
             {skills.map((skill, index) => (
               <span
                 key={skill + index}
-                className="last:flex-none flex-auto text-base text-center p-1 bg-blue-800 text-white font-medium rounded-md"
+                className="skills-bg last:flex-none flex-auto text-base text-center p-1 text-white font-medium rounded-md"
               >
                 {skill}
               </span>
@@ -116,7 +122,7 @@ const Template_1 = () => {
 
       <div className="col-span-6 w-full flex flex-col gap-8">
         <div className="grid gap-2">
-          <h4 className="title">Education History</h4>
+          <h4 className="title-space title">Education History</h4>
 
           <div className="grid gap-2">
             {education.map((edu, index) => (
@@ -141,7 +147,7 @@ const Template_1 = () => {
         </div>
 
         <div className="grid gap-2">
-          <h4 className="title">Work Experience</h4>
+          <h4 className="title-space title">Work Experience</h4>
 
           <div className="grid gap-2">
             {work.map((w, index) => (
@@ -155,7 +161,9 @@ const Template_1 = () => {
 
                 <div className="grid text-end">
                   <span className="font-semibold">
-                    <Link href={w.w_link}>{w.w_link}</Link>
+                    <Link href={w.w_link} className="link-color">
+                      {w.w_link}
+                    </Link>
                   </span>
 
                   <span className="font-semibold">
@@ -168,14 +176,16 @@ const Template_1 = () => {
         </div>
 
         <div className="grid gap-2">
-          <h4 className="title">Projects</h4>
+          <h4 className="title-space title">Projects</h4>
 
           <div className="grid gap-4">
             {projects.map((w, index) => (
               <div key={index} className="space-y-1">
                 <div className="w-full flex items-center gap-4 justify-between">
                   <h5>
-                    <Link href={w.p_link}>{w.p_name}</Link>
+                    <Link href={w.p_link} className="link-color">
+                      {w.p_name}
+                    </Link>
                   </h5>
 
                   <span className="flex-shrink-0 font-semibold">
@@ -189,20 +199,22 @@ const Template_1 = () => {
           </div>
         </div>
 
-        <div className="grid gap-2">
-          <h4 className="title">Extra-curricular activities</h4>
+        {extra.length !== 0 && (
+          <div className="grid gap-2">
+            <h4 className="title-space title">Extra-curricular activities</h4>
 
-          <ul className="grid gap-2 list-decimal">
-            {extra.map((w, index) => (
-              <li
-                key={index}
-                className="text-base list-inside list-item space-y-1"
-              >
-                {w}
-              </li>
-            ))}
-          </ul>
-        </div>
+            <ul className="grid gap-2 list-decimal">
+              {extra.map((w, index) => (
+                <li
+                  key={index}
+                  className="text-base list-inside list-item space-y-1"
+                >
+                  {w}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

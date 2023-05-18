@@ -28,7 +28,9 @@ const Resume = () => {
       const uuid = uid();
       router.replace(`/resume/${uuid}`);
     } else {
-      toaster.push(message, { placement: "topCenter" });
+      toaster.push(message, {
+        placement: "topCenter",
+      });
     }
   }, [user]);
 

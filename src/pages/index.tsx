@@ -7,11 +7,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <PageLayout title="Home" className="flex-c gap-10">
-      <h1 className="text-4xl md:text-6xl text-center text-blue-600 font-serif leading-none">
-        The Ultimate Online Resume Builder
-      </h1>
-
-      <div className="flex-c gap-10 max-w-full w-[900px]">
+      <div className="mt-10 flex-c gap-10 max-w-full w-[900px]">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-10">
           <div className="flex flex-col items-center md:items-start gap-8">
             <h1 className="font-serif text-4xl text-center md:text-left md:text-6xl text-black leading-none">
@@ -35,6 +31,10 @@ export default function Home() {
             alt="Hero section template image"
           />
         </div>
+
+        <h1 className="text-4xl md:text-6xl text-center text-blue-600 font-serif leading-none">
+          The Ultimate Online Resume Builder
+        </h1>
 
         <div className="space-y-4">
           <Divider className="w-full" />

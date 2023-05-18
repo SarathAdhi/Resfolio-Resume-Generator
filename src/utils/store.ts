@@ -30,6 +30,10 @@ export type ProjectProps = {
   p_end: string;
 };
 
+export type ElementsColorProps = {
+  [key: string]: string;
+};
+
 export type UseStoreProps = {
   formValues: {
     name: string;
@@ -49,7 +53,9 @@ export type UseStoreProps = {
   };
   setFormValues: (formValues: UseStoreProps["formValues"]) => void;
 
-  Template: React.FC;
+  Template: React.FC<{
+    elementsColor?: ElementsColorProps;
+  }>;
   activeTemplate: string;
   setTemplate: (Template: React.FC, activeTemplate: string) => void;
 };

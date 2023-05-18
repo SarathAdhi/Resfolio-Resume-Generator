@@ -2,6 +2,7 @@ import React from "react";
 import { BiLinkExternal } from "react-icons/bi";
 import { useStore } from "@utils/store";
 import Link from "next/link";
+import clsx from "clsx";
 
 const ClassName = "px-2 py-1 rounded-md bg-[#d5e3e2] text-black uppercase";
 const titleClassName = ClassName;
@@ -42,7 +43,7 @@ const Template_2 = () => {
           <div className=" text-black !text-base flex items-center gap-2">
             {phone && (
               <>
-                <Link className="text-black" href={`tel:${phone}`}>
+                <Link className="text-black link-color" href={`tel:${phone}`}>
                   {phone}
                 </Link>{" "}
                 |
@@ -53,7 +54,10 @@ const Template_2 = () => {
 
             {email && (
               <>
-                <Link className="text-black" href={`mailto:${email}`}>
+                <Link
+                  className="text-black link-color"
+                  href={`mailto:${email}`}
+                >
                   {email}
                 </Link>{" "}
                 |
@@ -62,7 +66,7 @@ const Template_2 = () => {
 
             {linkedin && (
               <>
-                <Link className="text-black" href={linkedin}>
+                <Link className="text-black link-color" href={linkedin}>
                   LinkedIn
                 </Link>{" "}
                 |
@@ -71,7 +75,7 @@ const Template_2 = () => {
 
             {github && (
               <>
-                <Link className="text-black" href={github}>
+                <Link className="text-black link-color" href={github}>
                   GitHub
                 </Link>
               </>
@@ -81,13 +85,13 @@ const Template_2 = () => {
       </div>
 
       <div className="w-full grid gap-2">
-        <h5 className={titleClassName}>Objective</h5>
+        <h5 className={clsx(titleClassName, "title")}>Objective</h5>
 
         <p className="text-justify">{objective}</p>
       </div>
 
       <div className="w-full grid gap-2">
-        <h5 className={titleClassName}>Skills</h5>
+        <h5 className={clsx(titleClassName, "title")}>Skills</h5>
 
         <div className="flex flex-wrap items-center gap-2 ">
           {skills.map((skill, index) => (
@@ -103,7 +107,7 @@ const Template_2 = () => {
 
       <div className="w-full flex flex-col gap-4">
         <div className="grid gap-2">
-          <h5 className={titleClassName}>Education History</h5>
+          <h5 className={clsx(titleClassName, "title")}>Education History</h5>
 
           <div className="grid gap-2">
             {education.map((edu, index) => (
@@ -130,7 +134,7 @@ const Template_2 = () => {
         </div>
 
         <div className="grid gap-2">
-          <h5 className={titleClassName}>Work Experience</h5>
+          <h5 className={clsx(titleClassName, "title")}>Work Experience</h5>
 
           <div className="grid gap-2">
             {work.map((w, index) => (
@@ -144,7 +148,7 @@ const Template_2 = () => {
                   <h6>
                     <Link
                       href={w.w_link}
-                      className="tracking-wider text-base text-blue-600"
+                      className="link-color tracking-wider text-base"
                     >
                       @{w.w_company}
                     </Link>
@@ -160,14 +164,17 @@ const Template_2 = () => {
         </div>
 
         <div className="grid gap-2">
-          <h5 className={titleClassName}>Projects</h5>
+          <h5 className={clsx(titleClassName, "title")}>Projects</h5>
 
           <div className="grid gap-2">
             {projects.map((w, index) => (
               <div key={index} className="space-y-1">
                 <div className="w-full flex items-center gap-4 justify-between">
                   <h5>
-                    <Link className="flex gap-2 items-center" href={w.p_link}>
+                    <Link
+                      className="link-color flex gap-2 items-center"
+                      href={w.p_link}
+                    >
                       {w.p_name} <BiLinkExternal />
                     </Link>
                   </h5>
@@ -183,20 +190,24 @@ const Template_2 = () => {
           </div>
         </div>
 
-        <div className="w-full grid gap-2">
-          <h5 className={titleClassName}>EXTRA-CURRICULAR ACTIVITIES</h5>
+        {extra.length !== 0 && (
+          <div className="w-full grid gap-2">
+            <h5 className={clsx(titleClassName, "title")}>
+              EXTRA-CURRICULAR ACTIVITIES
+            </h5>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {extra.map((e, index) => (
-              <span
-                key={e + index}
-                className="last:after:content-[''] after:content-[','] text-base text-center"
-              >
-                {e}
-              </span>
-            ))}
+            <div className="flex flex-wrap items-center gap-2">
+              {extra.map((e, index) => (
+                <span
+                  key={e + index}
+                  className="last:after:content-[''] after:content-[','] text-base text-center"
+                >
+                  {e}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
